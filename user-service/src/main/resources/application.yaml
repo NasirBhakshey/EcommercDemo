@@ -1,49 +1,12 @@
-
-
 spring:
   application:
     name: user-service
-  datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:8090/user_db}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:Nasir@786}
-    driver-class-name: org.postgresql.Driver
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: false
-    properties:
-      hibernate:
-        format_sql: true
+  config:
+    import:
+      - optional:configserver:http://localhost:8888
 
-server:
-  port: 8081
 
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
-    register-with-eureka: true
-    fetch-registry: true
-
-  instance:
-    prefer-ip-address: true
-    ip-address: 127.0.0.1
-    instance-id: ${spring.application.name}:${server.port}
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-          - health
-          - info
-          - metrics
-  endpoint:
-    health:
-      show-details: when_authorized
-
-jwt:
-  secret: ${JWT_SECRET:change-this-to-a-very-long-secret-key-for-local-development-only}
-  expiration: ${JWT_EXPIRATION:3600000}
+#jwt:
+#  secret: ${JWT_SECRET:change-this-to-a-very-long-secret-key-for-local-development-only}
+#  expiration: ${JWT_EXPIRATION:3600000}

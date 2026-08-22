@@ -133,10 +133,8 @@
             <artifactId>common-dto</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ecommerce</groupId>
-            <artifactId>role-service</artifactId>
-            <version>1.0.0</version>
-            <scope>compile</scope>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
     </dependencies>
