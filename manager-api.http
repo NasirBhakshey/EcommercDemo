@@ -1,0 +1,10 @@
+#POST http://localhost:8080/auth/login
+#Content-Type: application/json
+#
+#{
+#  "email": "manager@gmail.com",
+#  "password": "manager@1234"
+#}
+
+GET http://localhost:8080/manager/test
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsInVzZXJJZCI6MiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzg3MzEwMzA0LCJleHAiOjE3ODczMTM5MDR9.tWaNocxbJHxTIzpoySUO6nwHvXdQgscVokTzEQSFT3x9T6V7PjFUJtPagXoO_OVZtwrItvk0PSzVME55gF2Iog

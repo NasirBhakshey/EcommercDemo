@@ -1,0 +1,73 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowed-origins:
+                  - "http://localhost:4200"
+                allowed-methods:
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                  - PATCH
+                  - OPTIONS
+                allowed-headers:
+                  - "*"
+                allow-credentials: true
+
+          routes:
+            - id: user-auth-route
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/auth/**
+
+            - id: user-route
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/users/**
+
+            - id: role-route
+              uri: lb://ROLE-SERVICE
+              predicates:
+                - Path=/roles/**
+
+            - id: manager-route
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/manager/**
+
+            - id: admin-route
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/admin/**
+
+            - id: product-route
+              uri: lb://PRODUCT-SERVICE
+              predicates:
+                - Path=/product/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}
+
+jwt:
+  secret: ${JWT_SECRET:change-this-to-a-very-long-secret-key-for-local-development-only}
+  expiration: ${JWT_EXPIRATION:3600000}

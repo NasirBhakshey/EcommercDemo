@@ -1,0 +1,10 @@
+#POST http://localhost:8080/auth/login
+#Content-Type: application/json
+#
+#{
+#  "email": "admin@gmail.com",
+#  "password": "admin@1234"
+#}
+
+GET http://localhost:8080/admin/testadmin
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzg3MzA5ODM0LCJleHAiOjE3ODczMTM0MzR9.PSlmK5uFPsnjCChaXU_ucWk0jwsyoa78SF5q6VHejrkRkFCLvz5mXEORUbQwgAt_bPrzrZVwT_hK2wKWmm51TA

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/NasirBhakshey/EcommercDemo.git
+          search-paths: config-repo
+          default-label: main
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+server:
+  port: 8888
