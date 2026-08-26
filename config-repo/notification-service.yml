@@ -19,7 +19,7 @@ spring:
         spring.json.use.type.headers: false
 
           # Always deserialize into Notification Service's event class
-        spring.json.value.default.type: com.ecommerce.notificationservice.event.OrderCreatedEvent
+        spring.json.value.default.type: com.ecommerce.notificationservice.events.OrderCreatedEvent
 
 eureka:
   client:
