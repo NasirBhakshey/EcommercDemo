@@ -21,6 +21,20 @@ spring:
           # Always deserialize into Notification Service's event class
         spring.json.value.default.type: com.ecommerce.notificationservice.events.OrderCreatedEvent
 
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 eureka:
   client:
     service-url:
