@@ -1,4 +1,4 @@
 package com.ecommerce.notificationservice.kafka;
 
-public class OrderEventConsumer {
+public class PaymentFailedDltConsumer {
 }

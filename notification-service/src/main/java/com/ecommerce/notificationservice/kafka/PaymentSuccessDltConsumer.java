@@ -1,4 +1,4 @@
 package com.ecommerce.notificationservice.kafka;
 
-public class OrderDltConsumer {
+public class PaymentSuccessDltConsumer {
 }
