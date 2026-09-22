@@ -1,4 +1,26 @@
 package com.ecommerce.paymentservice.event;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PaymentRefundedEvent {
+
+    private UUID eventId;
+
+    private Long paymentId;
+    private Long orderId;
+    private Long userId;
+    private BigDecimal amount;
+    private String transactionId;
+    private LocalDateTime refundedAt;
 }

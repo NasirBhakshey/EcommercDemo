@@ -9,12 +9,15 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderCreatedEvent {
+public class InventoryReservedEvent {
+
+    private UUID eventId;
 
     private Long orderId;
     private Long userId;

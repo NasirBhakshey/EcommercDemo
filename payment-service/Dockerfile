@@ -1,4 +1,9 @@
-FROM ubuntu:latest
-LABEL authors="Lenovo"
+FROM eclipse-temurin:21-jre
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /app
+
+COPY target/payment-service-1.0.0.jar app.jar
+
+EXPOSE 8086
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
