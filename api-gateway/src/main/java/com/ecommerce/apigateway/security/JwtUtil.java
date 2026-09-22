@@ -43,14 +43,39 @@ public class JwtUtil {
     }
 
     public String extractEmail(String token) {
+
         return getClaims(token).getSubject();
     }
 
-    @SuppressWarnings("unchecked")
+    public Long extractUserId(String token) {
+
+        Object userId = getClaims(token).get("userId");
+
+        if (userId == null) {
+            throw new IllegalArgumentException(
+                    "userId claim is missing from token"
+            );
+        }
+
+        if (userId instanceof Number number) {
+            return number.longValue();
+        }
+
+        return Long.valueOf(userId.toString());
+    }
+
     public List<String> extractRoles(String token) {
 
         Claims claims = getClaims(token);
 
         return claims.get("roles", List.class);
+    }
+
+    public Claims validateAndGetClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 }
