@@ -1,4 +1,11 @@
 package com.ecommerce.productservice.repository;
 
-public interface OutboxEventRepository {
+import com.ecommerce.productservice.entity.OutboxEvent;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface OutboxEventRepository extends JpaRepository<OutboxEvent, Long> {
+
+    List<OutboxEvent> findTop100ByPublishedFalseOrderByCreatedAtAsc();
 }

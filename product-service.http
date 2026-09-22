@@ -1,5 +1,12 @@
-### GET request to example server
-GET https://examples.http-client.intellij.net/get
-    ?generated-in=IntelliJ IDEA
-
-###
+GET http://localhost:8080/product
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYXNpcmJoYWtzaGV5NDRAZ21haWwuY29tIiwidXNlcklkIjo0LCJlbWFpbCI6Im5hc2lyYmhha3NoZXk0NEBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImlhdCI6MTc4ODE4ODY0MywiZXhwIjoxNzg4MTkyMjQzfQ.EzBAqywUmbHHYsiE0Ias8IYwBWBEWqdAIDEAhddCzGPslEe3NQTT6L68R_5esyitsmV5jCXq0GJ5RAIPwUFs4A
+#POST http://localhost:8080/product
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzg4MTg4MDg3LCJleHAiOjE3ODgxOTE2ODd9.zaaQZ763bZbZfGUW8YnrCO7ULXQkm61eoYmy27Bp-VuatWX5--2lWYBQgjnPf7yMuE60ctcBj2KucEmPz55FBA
+#Content-Type: application/json
+#
+#{
+#  "name": "Parle-G",
+#  "description": "Parle product",
+#  "price": 15,
+#  "stock": 30
+#}
