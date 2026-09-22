@@ -1,0 +1,27 @@
+spring:
+  config:
+    import: ""
+
+  cloud:
+    config:
+      enabled: false
+
+    discovery:
+      enabled: false
+
+  flyway:
+    enabled: false
+
+  kafka:
+    listener:
+      auto-startup: false
+
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false
+
+# Fake value only for automated testing.
+# No real email will be sent because JavaMailSender is mocked.
+spring.mail.username: test-notification@example.com
