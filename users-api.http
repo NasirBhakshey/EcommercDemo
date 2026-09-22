@@ -1,10 +1,16 @@
-#POST http://localhost:8080/auth/login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "nasirbhakshey44@gmail.com",
+  "password": "nasir@1234"
+}
 #Content-Type: application/json
 #
 #{
-#  "email": "user@gmail.com",
-#  "password": "user@1234"
+#  "email": "nasirbhakshey44@gmail.com",
+#  "password": "nasir@1234"
 #}
 
-GET http://localhost:8080/users/profile
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsInVzZXJJZCI6MiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzg3MzEwMzA0LCJleHAiOjE3ODczMTM5MDR9.tWaNocxbJHxTIzpoySUO6nwHvXdQgscVokTzEQSFT3x9T6V7PjFUJtPagXoO_OVZtwrItvk0PSzVME55gF2Iog
+#GET http://localhost:8080/users/profile
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyQGdtYWlsLmNvbSIsInVzZXJJZCI6MywiZW1haWwiOiJtYW5hZ2VyQGdtYWlsLmNvbSIsInJvbGVzIjpbIk1BTkFHRVIiXSwiaWF0IjoxNzg3Mzk4ODQ5LCJleHAiOjE3ODc0MDI0NDl9.07bhjv9SKM5kqprwLyceDHpIyrPmCHSiNgXRh4Uv6nc5XeHhcepcaHaCDaQol4FDqPipnpDfn88P-loPpd6Icw

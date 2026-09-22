@@ -1,0 +1,23 @@
+spring:
+  config:
+    import: ""
+
+  cloud:
+    config:
+      enabled: false
+
+    discovery:
+      enabled: false
+
+  flyway:
+    enabled: false
+
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false
+
+jwt:
+  secret: "ThisIsATestJwtSecretKeyOnlyForAutomatedTesting123456789"
+  expiration: 600000
