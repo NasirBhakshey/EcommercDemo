@@ -1,4 +1,8 @@
 package com.ecommerce.orderservice.exception;
 
-public class ForbiddenOrderAccessException {
+public class ForbiddenOrderAccessException extends RuntimeException{
+
+    public ForbiddenOrderAccessException(String message) {
+        super(message);
+    }
 }
