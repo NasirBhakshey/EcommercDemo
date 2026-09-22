@@ -58,6 +58,9 @@
         <module>user-service</module>
         <module>role-service</module>
         <module>product-service</module>
+        <module>order-service</module>
+        <module>notification-service</module>
+        <module>payment-service</module>
     </modules>
 
 </project>
