@@ -40,17 +40,12 @@ public class orderController {
             @AuthenticationPrincipal AuthenticatedUser user,
             Authentication authentication) {
 
-        boolean isAdmin = authentication.getAuthorities()
-                .stream()
-                .anyMatch(authority ->
-                        authority.getAuthority().equals("ADMIN")
-                );
 
         return ResponseEntity.ok(
                 orderService.getOrderById(
                         id,
                         user.userId(),
-                        isAdmin
+                        isAdmin(authentication)
                 )
         );
     }
@@ -79,7 +74,7 @@ public class orderController {
         orderService.cancelOrder(
                 id,
                 user.userId(),
-                isAdmin
+                isAdmin(authentication)
         );
 
         return ResponseEntity.noContent().build();
@@ -90,5 +85,13 @@ public class orderController {
     public ResponseEntity<List<orderResponse>> getAllOrders() {
 
         return ResponseEntity.ok(orderService.getAllOrders());
+    }
+
+    private boolean isAdmin(Authentication authentication) {
+        return authentication.getAuthorities()
+                .stream()
+                .anyMatch(authority ->
+                        authority.getAuthority().equals("ROLE_ADMIN")
+                );
     }
 }

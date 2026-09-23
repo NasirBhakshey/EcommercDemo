@@ -1,6 +1,6 @@
 package com.ecommerce.orderservice.config;
 
-import com.ecommerce.orderservice.security.GatewayHeaderAuthenticationFilter;
+import com.ecommerce.orderservice.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -12,10 +12,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    private final GatewayHeaderAuthenticationFilter gatewayHeaderAuthenticationFilter;
+    private final JwtAuthenticationFilter gatewayHeaderAuthenticationFilter;
 
     public SecurityConfig(
-            GatewayHeaderAuthenticationFilter gatewayHeaderAuthenticationFilter) {
+            JwtAuthenticationFilter gatewayHeaderAuthenticationFilter) {
 
         this.gatewayHeaderAuthenticationFilter = gatewayHeaderAuthenticationFilter;
     }
@@ -27,7 +27,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
 
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()
+                        .requestMatchers("/actuator/health").permitAll()
+                        .anyRequest().authenticated()
                 )
 
                 .addFilterBefore(
