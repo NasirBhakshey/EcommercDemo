@@ -25,3 +25,8 @@ eureka:
 # Fake value only for automated testing.
 # No real email will be sent because JavaMailSender is mocked.
 spring.mail.username: test-notification@example.com
+
+management:
+  health:
+    mail:
+      enabled: false

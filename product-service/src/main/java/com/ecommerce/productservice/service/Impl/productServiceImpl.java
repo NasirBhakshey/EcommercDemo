@@ -6,6 +6,9 @@ import com.ecommerce.productservice.entity.Product;
 import com.ecommerce.productservice.exception.productNotFoundException;
 import com.ecommerce.productservice.repository.productRepository;
 import com.ecommerce.productservice.service.productService;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +25,10 @@ public class productServiceImpl implements productService {
 
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "allProducts", allEntries = true),
+            @CacheEvict(value = "productById", allEntries = true)
+    })
     public productResponse createProduct(productRequest request) {
 
         Product product=new Product();
@@ -36,6 +43,7 @@ public class productServiceImpl implements productService {
     }
 
     @Override
+    @Cacheable(value = "productById", key = "#id")
     public productResponse getProductById(Long id) {
 
         Product product = repository.findById(id).orElseThrow(()->
@@ -45,6 +53,7 @@ public class productServiceImpl implements productService {
     }
 
     @Override
+    @Cacheable(value = "allProducts", key = "'all'")
     public List<productResponse> getAllProduct() {
         return repository.findAll()
                 .stream()
@@ -53,6 +62,10 @@ public class productServiceImpl implements productService {
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "allProducts", allEntries = true),
+            @CacheEvict(value = "productById", allEntries = true)
+    })
     public productResponse updateProduct(Long id, productRequest request) {
 
         Product product = repository.findById(id).orElseThrow(()->
@@ -68,6 +81,10 @@ public class productServiceImpl implements productService {
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "allProducts", allEntries = true),
+            @CacheEvict(value = "productById", allEntries = true)
+    })
     public void deleteProduct(Long id) {
 
         Product product = repository.findById(id).orElseThrow(()->

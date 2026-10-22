@@ -83,6 +83,25 @@ services:
       - microservices-net
 
 
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: unless-stopped
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?Set REDIS_PASSWORD in .env}
+    command: [ "sh", "-c", "exec redis-server --appendonly yes --requirepass \"$${REDIS_PASSWORD}\"" ]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli -a \"$${REDIS_PASSWORD}\" ping 2>/dev/null | grep -q PONG" ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - microservices-net
+
+
+
   # =========================================================
   # User Service
   # =========================================================
@@ -162,8 +181,8 @@ services:
 
     container_name: product-service
 
-    expose:
-      - "8083"
+    ports:
+      - "8083:8083"
 
     environment:
       DB_URL: jdbc:postgresql://postgres:5432/product_db
@@ -177,11 +196,17 @@ services:
 
       SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8888
 
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+
     depends_on:
       postgres:
         condition: service_healthy
       eureka-server:
         condition: service_started
+      redis:
+        condition: service_healthy
 
     networks:
       - microservices-net
@@ -375,6 +400,7 @@ services:
 volumes:
   pgdata:
   kafka-data:
+  redis-data:
 
 
 # =========================================================
