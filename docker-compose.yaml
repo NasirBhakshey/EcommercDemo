@@ -89,7 +89,7 @@ services:
     restart: unless-stopped
     environment:
       REDIS_PASSWORD: ${REDIS_PASSWORD:?Set REDIS_PASSWORD in .env}
-    command: [ "sh", "-c", "exec redis-server --appendonly yes --requirepass \"$${REDIS_PASSWORD}\"" ]
+    command: [ "sh", "-c", "exec redis-server --appendonly yes --requirepass \"$${REDIS_PASSWORD}\" --maxmemory 128mb --maxmemory-policy allkeys-lru" ]
     volumes:
       - redis-data:/data
     healthcheck:
